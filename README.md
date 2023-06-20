@@ -10,4 +10,4 @@ CREATE TABLE customers (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, weight R
 - using primary keys
 ```
 CREATE TABLE customers (id INTEGER PRIMARY KEY, age INTEGER);
-```sql
+```
