@@ -60,25 +60,36 @@ SELECT * FROM customers;
 ```
 - filter with condition
 ```sql
-SELECT * FROM customers WHERE age > 21;
+SELECT * FROM customers 
+WHERE age > 21;
 ```
 - filter with multiple condition
 ```sql
-SELECT * FROM customers WHERE age < 21 AND state = "NY";
+SELECT * FROM customers 
+WHERE age < 21 AND state = "NY";
 ```
 - filter with **IN**
 ```sql
-SELECT * FROM customers WHERE plan IN ("free", "basic");
+SELECT * FROM customers 
+WHERE plan IN ("free", "basic");
 ```
 - select specific columns
 ```sql
-SELECT name, age FROM customers;
+SELECT name, age 
+FROM customers;
 ```
 - order result
 ```sql
-SELECT * FROM customers WHERE age > 21 ORDER BY age DESC;
+SELECT * FROM customers 
+WHERE age > 21 
+ORDER BY age DESC;
 ```
 - transform with **CASE**
 ```sql
-SELECT name, CASE WHEN age > 18 THEN "adult" ELSE "minor" END "type" FROM customers;
+SELECT name, 
+CASE 
+    WHEN age > 18 THEN "adult" 
+    ELSE "minor" 
+    END "type" 
+FROM customers;
 ```
