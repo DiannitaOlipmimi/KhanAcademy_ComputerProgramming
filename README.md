@@ -3,24 +3,29 @@ Computer Programming Course by Khan Academy
 
 ## Documentation
 ###  Creating tables
-
-
-- Many data types
 The "CREATE TABLE" command is used in SQLite to create a new table in a database. It allows you to define the table's name, columns, column types, default values, collation sequence, primary key, constraints, generated column constraint, rowid, and type checking.
 
-When using the command, you must provide a name for the new table. Table names starting with "sqlite_" are reserved for internal use and cannot be used. The table can be created in the main database, the temp database, or any attached database by specifying the appropriate database name. If no schema name is specified, the table is created in the main database.
-
-If a table, index, or view with the same name already exists in the specified database, it is usually an error to create a new table with that name. However, if the "IF NOT EXISTS" clause is used, the CREATE TABLE command will have no effect and no error message will be returned if a table or view with the same name already exists. However, an error will still be returned if the table cannot be created due to an existing index, even with the "IF NOT EXISTS" clause.
-
-The name of each column is the same as the name of the corresponding column in the result set of the SELECT statement. The declared type of each column is determined by the expression affinity of the corresponding expression in the result set of the SELECT statement, as follows:
-
-| expression affinity      | column Declared Type |
+#### SQL Data Types
+| Data Type      | Description |
 | ----------- | ----------- |
-| TEXT      | "TEXT"       |
-| NUMERIC   | "NUM"        |
-| INTEGER      | "INT"       |
-| REAL   | "REAL"        |
-| BLOB      | ""       |
+| CHAR(size)      |  A FIXED length string with column length from 0 to 255.      |
+| VARCHAR(size)   | A VARIABLE length string with maximum string length 65535        |
+| INTEGER      | Signed range is from -2147483648 to 2147483647       |
+| DATE   | A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'        |
+
+#### Constraints in Tables
+- **NOT NULL**: This constraint ensures that a query does not insert a NULL value in a column on which the constraint has been created.
+- **UNIQUE**: This constraint ensures that the query inserts only unique values in the column on which the constraint has been created.
+- **CHECK**: When we insert a record in a table, the check constraint ensures that the values that we are inserting in a column must satisfy the condition specified in a CHECK constraint.
+- **DEFAULT**: The DEFAULT constraint inserts a default value. If we do not specify the values for the column on which the default constraint, it inserts the default value specified in the DEFAULT constraints.
+- **PRIMARY KEY**: The Primary key constraint is used to identify each record uniquely. Following are the characteristics of the Primary key
+The primary key consists of one or more columns.
+The primary key contains unique values and cannot contain a NULL value.
+We can create one primary key in a table.
+When we create a primary key, a clustered index will be created automatically.
+- **FOREIGN KEY**: The foreign key is a column that creates a link between two tables. The foreign key of any table refers to the Primary Key of another table. A table can have one or more foreign keys. A foreign key constraint prevents the UPDATE and - - DELETE statement that breaks the link between two tables.
+
+- Many data types
 
 ```sql
 CREATE TABLE customers (
@@ -46,4 +51,34 @@ INSERT INTO customers VALUES (73, "Brian", 33);
 -Inserting data for named columns
 ```sql
 INSERT INTO customers (name, age) VALUES ("Brian", 33);
+```
+
+### Querying data
+- Select everything
+```sql
+SELECT * FROM customers;
+```
+- filter with condition
+```sql
+SELECT * FROM customers WHERE age > 21;
+```
+- filter with multiple condition
+```sql
+SELECT * FROM customers WHERE age < 21 AND state = "NY";
+```
+- filter with **IN**
+```sql
+SELECT * FROM customers WHERE plan IN ("free", "basic");
+```
+- select specific columns
+```sql
+SELECT name, age FROM customers;
+```
+- order result
+```sql
+SELECT * FROM customers WHERE age > 21 ORDER BY age DESC;
+```
+- transform with **CASE**
+```sql
+SELECT name, CASE WHEN age > 18 THEN "adult" ELSE "minor" END "type" FROM customers;
 ```
