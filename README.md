@@ -43,12 +43,12 @@ CREATE TABLE customers (
 ```
 
 ### Inserting data
--Inserting data
+- Inserting data
 ```sql
 INSERT INTO customers VALUES (73, "Brian", 33);
 ```
 
--Inserting data for named columns
+- Inserting data for named columns
 ```sql
 INSERT INTO customers (name, age) VALUES ("Brian", 33);
 ```
