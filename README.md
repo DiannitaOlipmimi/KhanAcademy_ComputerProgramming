@@ -132,7 +132,8 @@ GROUP BY country
 ```
 
 ### Joining related tables
-![Types of Join](images/types of join.png)
+
+![Alt text](<images/types of join.png>)
 
 1. **INNER JOIN**
 2. **LEFT OUTER JOIN**
