@@ -93,3 +93,76 @@ CASE
     END "type" 
 FROM customers;
 ```
+
+### Aggregating data
+| Built=in aggregate functions | Description |
+| -----------                  | ----------- |
+|  AVG(X)                      | returns the average value of all non-NULL X within a group            |
+|  COUNT(X)                    | returns a count of the number of times that X is not NULL in a group            |
+|  COUNT(*)                    | returns the total number of rows in the group            |
+|  GROUP_CONCAT(X)             | returns a string which is the concatenation of all non-NULL values of X            |
+|  GROUP_CONCAT(X,Y)           | returns a string which is the concatenation of all non-NULL values of X and Y. If parameter Y is present then it is used as the separator between instances of X. A comma (",") is used as the separator if Y is omitted. The order of the concatenated elements is arbitrary.           |
+|  MAX(X)                      | returns the maximum value of all values in the group            |
+|  MIN(X)                      | returns the minimum non-NULL value of all values in the group            |
+|  SUM(X)                      | returns the minimum non-NULL value of all values in the group (integer value if all non-NULL inputs are integers)           |
+|  TOTAL(X)                    |  returns the minimum non-NULL value of all values in the group (floating point value)           |
+
+- Aggregate function
+```sql
+SELECT MAX(age) 
+FROM customers;
+```
+
+- grouping data
+```sql
+SELECT gender, 
+COUNT(*) 
+FROM students 
+GROUP BY gender;
+```
+
+- using **HAVING** with **GROUP BY**
+The usage of GROUP BY in a SELECT query allows you to group results, and when combined with an aggregate function, you can use HAVING to filter the grouped rows based on specific conditions.
+```sql
+SELECT country, COUNT(*) as num_won 
+FROM nobel_prizes
+GROUP BY country 
+    HAVING num_won > 1;
+    
+```
+
+### Joining related tables
+[Types of Join](images/types of join.png)
+1. **INNER JOIN**
+2. **LEFT OUTER JOIN**
+3. **RIGHT OUTER JOIN**
+4. **FULL OUTER JOIN**
+[source](https://www.w3schools.com/sql/sql_join.asp)
+
+- Inner join
+```sql
+SELECT customers.name, orders.item 
+FROM customers 
+JOIN orders 
+ON customers.id = orders.customer_id;
+```
+- Outer join
+```sql
+SELECT customers.name, orders.item 
+FROM customers 
+LEFT OUTER JOIN orders 
+ON customers.id = orders.customer_id;
+```
+
+### Updating and deleting data
+- updating data
+```sql
+UPDATE customers 
+SET age = 33 
+WHERE id = 73;
+```
+- deleting data
+```sql
+DELETE FROM customers 
+WHERE id = 73;
+```
