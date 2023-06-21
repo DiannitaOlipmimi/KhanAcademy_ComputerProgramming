@@ -132,11 +132,13 @@ GROUP BY country
 ```
 
 ### Joining related tables
-[Types of Join](images/types of join.png)
+![Types of Join](images/types of join.png)
+
 1. **INNER JOIN**
 2. **LEFT OUTER JOIN**
 3. **RIGHT OUTER JOIN**
 4. **FULL OUTER JOIN**
+
 [source](https://www.w3schools.com/sql/sql_join.asp)
 
 - Inner join
