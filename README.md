@@ -135,12 +135,12 @@ GROUP BY country
 
 ![Alt text](<images/types of join.png>)
 
-1. **INNER JOIN**
-2. **LEFT OUTER JOIN**
-3. **RIGHT OUTER JOIN**
-4. **FULL OUTER JOIN**
-
 [source](https://www.w3schools.com/sql/sql_join.asp)
+
+1. **INNER JOIN** : Returns records that have matching values in both tables
+2. **LEFT OUTER JOIN** : Returns records that have matching values in both tables
+3. **RIGHT OUTER JOIN** : Returns all records from the right table, and the matched records from the left table
+4. **FULL OUTER JOIN** : Returns all records when there is a match in either left or right table
 
 - Inner join
 ```sql
