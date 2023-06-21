@@ -389,4 +389,3 @@ FROM singers
 JOIN songs
 WHERE singers.id = songs.singer_id;
 
-    
